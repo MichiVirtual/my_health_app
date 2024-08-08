@@ -5,14 +5,6 @@ Created on Wed Aug  7 15:12:52 2024
 
 @author: juliansanchez
 
-cd /Users/juliansanchez/health_tracker
-
-(base) juliansanchez@192 ~ % cd health_tracker
-(base) juliansanchez@192 health_tracker % python3 -m venv venv
-source venv/bin/activate
-
-(venv) (base) juliansanchez@192 health_tracker % pip install streamlit pandas
-
 """
 import streamlit as st
 import pandas as pd
@@ -175,14 +167,6 @@ st.plotly_chart(fig1)
 fig2 = px.line(df_medidas, x='fecha', y='ua', title='Niveles de Ácido Úrico a lo largo del tiempo')
 st.plotly_chart(fig2)
 
-# Función para exportar las tablas a Excel
-def export_to_excel():
-    with pd.ExcelWriter('health_tracker_export.xlsx') as writer:
-        df_diario.to_excel(writer, sheet_name='RegistroDiario', index=False)
-        df_comidas.to_excel(writer, sheet_name='Comidas', index=False)
-        df_medidas.to_excel(writer, sheet_name='Mediciones', index=False)
-    st.success('Datos exportados a health_tracker_export.xlsx')
-
 # Funcionalidad para resetear la base de datos
 def deep_reset():
     c.execute('DROP TABLE IF EXISTS RegistroDiario')
@@ -198,16 +182,15 @@ def soft_reset():
     conn.commit()
     st.success('Todos los registros eliminados, pero las tablas se mantienen.')
 
-# Botón para exportar a Excel
-if st.button('Exportar Datos a Excel'):
-    export_to_excel()
 
 # Botones para resetear la base de datos
+"""
 if st.button('Reseteo Profundo (Eliminar y Recrear Tablas)'):
     deep_reset()
 
 if st.button('Reseteo Suave (Eliminar Registros)'):
     soft_reset()
+"""
 
 # Botón para activar la funcionalidad de edición
 if 'editar' not in st.session_state:
