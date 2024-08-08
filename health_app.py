@@ -184,13 +184,13 @@ def soft_reset():
 
 
 # Botones para resetear la base de datos
-"""
-if st.button('Reseteo Profundo (Eliminar y Recrear Tablas)'):
-    deep_reset()
 
-if st.button('Reseteo Suave (Eliminar Registros)'):
-    soft_reset()
-"""
+#if st.button('Reseteo Profundo (Eliminar y Recrear Tablas)'):
+#    deep_reset()
+
+#if st.button('Reseteo Suave (Eliminar Registros)'):
+#    soft_reset()
+
 
 # Botón para activar la funcionalidad de edición
 if 'editar' not in st.session_state:
